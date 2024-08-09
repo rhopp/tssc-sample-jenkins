@@ -38,6 +38,7 @@ function rox-image-scan() {
 	echo "Using rox central endpoint ${ROX_CENTRAL_ENDPOINT}"
 
 	echo "Download roxctl cli"
+ 	set -x
 	if [ "${INSECURE_SKIP_TLS_VERIFY}" = "true" ] ; then
 	  curl_insecure='--insecure'
 	fi
@@ -85,6 +86,7 @@ function rox-image-scan() {
 	  note="Task $(context.task.name) completed: Refer to Tekton task result SCAN_OUTPUT for found vulnerabilities."
 	fi
 	set_test_output_result SUCCESS "$note"
+ 	set +x
 }
 
 function report() {
